@@ -3,17 +3,18 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/fo
 import { AuthService } from "../../../services/auth.service";
 
 @Component({
-    selector: "app-login",
-    templateUrl: "./login.component.html",
-    styleUrls: ["./login.component.scss"]
+    selector: "app-register",
+    templateUrl: "./register.component.html",
+    styleUrls: ["./register.component.scss"]
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-    loginForm: FormGroup;
+    registerForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService) {
-        this.loginForm = this.formBuilder.group({
+        this.registerForm = this.formBuilder.group({
             username: ["", [Validators.required]],
+            email: ["", [Validators.required]],
             password: ["", [Validators.required]]
         });
     }
@@ -22,17 +23,22 @@ export class LoginComponent implements OnInit {
 
     }
 
-    login(): void {
-        this.authService.login(this.loginForm.value).subscribe(data => {
+    register(): void {
+        this.authService.register(this.registerForm.value).subscribe(data => {
             console.log(data);
         });
     }
 
     get username(): AbstractControl {
-        return this.loginForm.get("username");
+        return this.registerForm.get("username");
+    }
+
+    get email(): AbstractControl {
+        return this.registerForm.get("email");
     }
 
     get password(): AbstractControl {
-        return this.loginForm.get("password");
+        return this.registerForm.get("password");
     }
+
 }
