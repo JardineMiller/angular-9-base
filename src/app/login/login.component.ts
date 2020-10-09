@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: "app-login",
@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        this.authService.login(this.loginForm.value).subscribe(data => {
-            console.log(data);
+        this.authService.login(this.loginForm.value).subscribe(response => {
+            this.authService.saveToken(response.token);
         });
     }
 

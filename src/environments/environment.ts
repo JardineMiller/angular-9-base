@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: ""
+  apiUrl: "https://webapp-200803181743.azurewebsites.net"
 };
 
 /*
