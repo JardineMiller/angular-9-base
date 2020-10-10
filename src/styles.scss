@@ -2,6 +2,21 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~halfmoon/css/halfmoon-variables.min.css';
+
+:root {
+    /* Change primary color from blue to indigo */
+
+    --primary-color: var(--indigo-color); /* Before: var(--blue-color) */
+    --primary-color-light: var(--indigo-color-light); /* Before: var(--blue-color-light) */
+    --primary-color-very-light: var(--indigo-color-very-light); /* Before: var(--blue-color-very-light) */
+    --primary-color-dark: var(--indigo-color-dark); /* Before: var(--blue-color-dark) */
+    --primary-color-very-dark: var(--indigo-color-very-dark); /* Before: var(--blue-color-very-dark) */
+    --primary-box-shadow-color: var(--indigo-box-shadow-color); /* Before: var(--blue-box-shadow-color) */
+    --primary-box-shadow-color-darker: var(--indigo-box-shadow-color-darker); /* Before: var(--blue-box-shadow-color-darker) */
+    --text-color-on-primary-color-bg: var(--text-color-on-indigo-color-bg);
+}
+
 
 /* You can add global styles to this file, and also import other style files */
 .auth-form {
