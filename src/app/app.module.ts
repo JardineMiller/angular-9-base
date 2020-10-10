@@ -11,13 +11,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { AuthService } from "../services/auth.service";
 import { AuthGuardService } from "../services/auth-guard.service";
 import { HomeComponent } from "./home/home.component";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         RegisterComponent,
-        HomeComponent
+        HomeComponent,
+        SidebarComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,

@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import halfmoon from "halfmoon";
 
 @Component({
     selector: "app-register",
     templateUrl: "./register.component.html",
     styleUrls: ["./register.component.scss"]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements AfterViewInit {
 
     registerForm: FormGroup;
 
@@ -18,10 +19,6 @@ export class RegisterComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]],
             password: ["", [Validators.required]]
         });
-    }
-
-    ngOnInit(): void {
-
     }
 
     register(): void {
@@ -52,6 +49,10 @@ export class RegisterComponent implements OnInit {
 
     get password(): AbstractControl {
         return this.registerForm.get("password");
+    }
+
+    ngAfterViewInit(): void {
+        halfmoon.onDOMContentLoaded();
     }
 
 }
