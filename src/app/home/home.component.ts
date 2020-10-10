@@ -9,6 +9,10 @@ import halfmoon from "halfmoon";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements AfterViewInit {
+  code = `function myFunction() {
+  document.getElementById("demo1").innerHTML = "Hello there!";
+  document.getElementById("demo2").innerHTML = "How are you?";
+}`;
 
   constructor(private authService: AuthService, private router: Router) { }
 

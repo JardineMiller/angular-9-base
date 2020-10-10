@@ -13,6 +13,7 @@ import { AuthGuardService } from "../services/auth-guard.service";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
 
 @NgModule({
     declarations: [
@@ -28,8 +29,25 @@ import { NavbarComponent } from "./navbar/navbar.component";
         AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
+        HighlightModule
     ],
-    providers: [AuthService, AuthGuardService],
+    providers: [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                // fullLibraryLoader: () => import("highlight.js"),
+                coreLibraryLoader: () => import("highlight.js/lib/core"),
+                lineNumbersLoader: () => import("highlightjs-line-numbers.js"),
+                languages: {
+                    javascript: () => import("highlight.js/lib/languages/javascript"),
+                    css: () => import("highlight.js/lib/languages/css"),
+                    html: () => import("highlight.js/lib/languages/xml")
+                }
+            }
+        },
+        AuthService,
+        AuthGuardService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
