@@ -10,9 +10,8 @@ import halfmoon from "halfmoon";
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-
     loginForm: FormGroup;
-    private loading = true;
+    loading = true;
 
     constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
         this.loginForm = this.formBuilder.group({
@@ -33,6 +32,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this.router.navigate([""]);
         }, error => {
             console.error(error);
+            this.loading = false;
         });
     }
 

@@ -26,3 +26,23 @@
 .auth-form {
     margin-top: 15%;
 }
+
+.spinner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--gray-color-light);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+.dark-mode .spinner {
+    background: var(--dark-color-light)
+}
