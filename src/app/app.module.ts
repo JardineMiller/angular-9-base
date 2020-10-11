@@ -14,6 +14,20 @@ import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
+import { ToastService } from "../services/toast.service";
+
+const highlightJsConfig = {
+    provide: HIGHLIGHT_OPTIONS,
+    useValue: {
+        coreLibraryLoader: () => import("highlight.js/lib/core"),
+        lineNumbersLoader: () => import("highlightjs-line-numbers.js"),
+        languages: {
+            javascript: () => import("highlight.js/lib/languages/javascript"),
+            css: () => import("highlight.js/lib/languages/css"),
+            html: () => import("highlight.js/lib/languages/xml")
+        }
+    }
+};
 
 @NgModule({
     declarations: [
@@ -32,21 +46,10 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
         HighlightModule
     ],
     providers: [
-        {
-            provide: HIGHLIGHT_OPTIONS,
-            useValue: {
-                // fullLibraryLoader: () => import("highlight.js"),
-                coreLibraryLoader: () => import("highlight.js/lib/core"),
-                lineNumbersLoader: () => import("highlightjs-line-numbers.js"),
-                languages: {
-                    javascript: () => import("highlight.js/lib/languages/javascript"),
-                    css: () => import("highlight.js/lib/languages/css"),
-                    html: () => import("highlight.js/lib/languages/xml")
-                }
-            }
-        },
+        highlightJsConfig,
         AuthService,
-        AuthGuardService
+        AuthGuardService,
+        ToastService
     ],
     bootstrap: [AppComponent]
 })
