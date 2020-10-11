@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/fo
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import halfmoon from "halfmoon";
+import { ToastService } from "../../services/toast.service";
 
 @Component({
     selector: "app-login",
@@ -11,9 +12,17 @@ import halfmoon from "halfmoon";
 })
 export class LoginComponent implements OnInit, AfterViewInit {
     loginForm: FormGroup;
-    loading = true;
+    loading: boolean;
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    incorrectPassword: boolean;
+    invalidUsername: boolean;
+
+    constructor(
+        private formBuilder: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
+        private toastService: ToastService
+    ) {
         this.loginForm = this.formBuilder.group({
             username: ["", [Validators.required]],
             password: ["", [Validators.required]]
@@ -31,9 +40,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this.loading = false;
             this.router.navigate([""]);
         }, error => {
-            console.error(error);
+            this.handleError(error);
             this.loading = false;
         });
+    }
+
+    handleError(errorObj): void {
+        this.incorrectPassword = false;
+        this.invalidUsername = false;
+
+        if (errorObj.status === 401) {
+            this.incorrectPassword = true;
+        }
+
+        if (errorObj.status === 404) {
+            this.invalidUsername = true;
+        }
     }
 
     get username(): AbstractControl {

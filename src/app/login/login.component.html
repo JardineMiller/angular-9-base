@@ -1,56 +1,66 @@
 <div *ngIf="loading" class="spinner">
-    <img src="assets/svg-loaders/oval.svg">
+    <img src="assets/svg-loaders/oval.svg" alt="loading-spinner">
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-            <div class="auth-form">
-                <h3>Login</h3>
-                <form [formGroup]="loginForm"
-                      (ngSubmit)="login()">
+<div *ngIf="!loading" class="page-wrapper">
+    <div class="sticky-alerts"></div>
 
-                    <div class="form-group">
-                        <label for="username">
-                            Username
-                            <span class="text-danger">*</span>
-                        </label>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4">
+                <div class="auth-form">
+                    <h3>Login</h3>
+                    <form [formGroup]="loginForm"
+                          (ngSubmit)="login()">
 
-                        <input type="text"
-                               class="form-control"
-                               id="username"
-                               placeholder="Username"
-                               formControlName="username">
+                        <div class="form-group">
+                            <label for="username">
+                                Username
+                                <span class="text-danger">*</span>
+                            </label>
 
-                        <small *ngIf="username.touched && username.errors?.required"
-                               class="text-danger">Username is required
-                        </small>
-                    </div>
+                            <input type="text"
+                                   class="form-control"
+                                   id="username"
+                                   placeholder="Username"
+                                   formControlName="username">
 
-                    <div class="form-group">
-                        <label for="password">
-                            Password
-                            <span class="text-danger">*</span>
-                        </label>
-                        <input type="password"
-                               class="form-control"
-                               id="password"
-                               placeholder="Password"
-                               formControlName="password">
+                            <small *ngIf="(username.touched && username.errors?.required)"
+                                   class="text-danger">Username is required
+                            </small>
+                            <small *ngIf="invalidUsername"
+                                   class="text-danger">Username "{{username.value}}" not found
+                            </small>
+                        </div>
 
-                        <small *ngIf="password.touched && password.errors?.required"
-                               class="text-danger">Password is required
-                        </small>
-                    </div>
+                        <div class="form-group">
+                            <label for="password">
+                                Password
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="password"
+                                   class="form-control"
+                                   id="password"
+                                   placeholder="Password"
+                                   formControlName="password">
 
-                    <button type="submit"
-                            class="btn btn-primary"
-                            [disabled]="!loginForm.valid">Login
-                    </button>
-                    <a routerLink="/register">
-                        Register
-                    </a>
-                </form>
+                            <small *ngIf="(password.touched && password.errors?.required)"
+                                   class="text-danger">Password is required
+                            </small>
+                            <small *ngIf="incorrectPassword"
+                                   class="text-danger">Password incorrect
+                            </small>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary"
+                                [disabled]="!loginForm.valid">Login
+                        </button>
+                        <a class="m-2 font-size-12" routerLink="/register">
+                            Need an acccount?
+                        </a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
