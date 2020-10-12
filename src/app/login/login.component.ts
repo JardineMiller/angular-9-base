@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/fo
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import halfmoon from "halfmoon";
-import { ToastService } from "../../services/toast.service";
 
 @Component({
     selector: "app-login",
@@ -21,7 +20,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
         private formBuilder: FormBuilder,
         private authService: AuthService,
         private router: Router,
-        private toastService: ToastService
     ) {
         this.loginForm = this.formBuilder.group({
             username: ["", [Validators.required]],
