@@ -8,14 +8,14 @@ import { LoginComponent } from "./login/login.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from "./register/register.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { AuthService } from "../services/auth.service";
-import { AuthGuardService } from "../services/auth-guard.service";
+import { AuthService } from "../services/auth/auth.service";
+import { AuthGuardService } from "../services/auth/auth-guard.service";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
 import { ToastService } from "../services/toast.service";
-import { TokenInterceptorService } from "../services/token-interceptor.service";
+import { TokenInterceptorService } from "../services/auth/token-interceptor.service";
 
 const highlightJsConfig = {
     provide: HIGHLIGHT_OPTIONS,

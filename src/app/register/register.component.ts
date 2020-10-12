@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 import { Router } from "@angular/router";
 import halfmoon from "halfmoon";
 
