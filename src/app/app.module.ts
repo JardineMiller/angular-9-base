@@ -15,7 +15,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
 import { ToastService } from "../services/toast.service";
-import { TokenInterceptorService } from "../services/auth/token-interceptor.service";
+import { HttpConfigInterceptor } from "../services/auth/http-config-interceptor.service";
 
 const highlightJsConfig = {
     provide: HIGHLIGHT_OPTIONS,
@@ -32,7 +32,7 @@ const highlightJsConfig = {
 
 const tokenInterceptorConfig = {
     provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
+    useClass: HttpConfigInterceptor,
     multi: true
 };
 
