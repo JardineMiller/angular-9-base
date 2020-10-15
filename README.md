@@ -4,8 +4,8 @@ Contains:
 - JWT Authentication
 - HttpRequest Token Interceptor
 - HttpResponse Error Handling Interceptor
-- Halfmoon CSS Ui Kit
-- A Duumy Home component
+- Halfmoon CSS UI Kit
+- A Dummy Home component
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
